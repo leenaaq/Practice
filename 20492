@@ -1,0 +1,11 @@
+#include <iostream>
+
+int main() {
+    long long a, b;
+    std::cin >> a;
+    b = a - (a * 0.22);
+    std::cout << b << " ";
+    b = a - (a * 0.2 * 0.22);
+    std::cout << b << "\n";
+
+}
