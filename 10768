@@ -1,0 +1,17 @@
+#include <iostream>
+
+int main() {
+    int a, b;
+    std::cin >> a >> b;
+
+    if (a == 2) {
+        if (b == 18) std::cout << "Special";
+        else if (b > 18) std::cout << "After";
+        else std::cout << "Before";
+    }
+    else if (a > 2) std::cout << "After";
+    else std::cout << "Before";
+    
+
+    return 0;
+}
