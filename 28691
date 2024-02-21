@@ -1,0 +1,16 @@
+#include <iostream>
+int main () {
+    char n;
+    std::cin >> n;
+    if (n == 'M') 
+        std::cout << "MatKor";
+    else if (n == 'W') 
+        std::cout << "WiCys";
+    else if (n == 'C') 
+        std::cout << "CyKor";
+    else if (n == 'A') 
+        std::cout << "AlKor";
+    else if (n == '$') 
+        std::cout << "$clear";
+    return 0;
+}
