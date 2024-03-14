@@ -1,0 +1,42 @@
+#include <iostream>
+
+int main()
+{
+    int a;
+    std::string str;
+    
+    std::cin >> a;
+    for (int i = 0; i < a; i++) {
+        std::cin >> str;
+
+        int b[8] = { 0, };
+        for (int j = 0; j < 39; j ++) {
+            if (str[j] == 'T') { // 뒤??
+                if (str[j + 1] == 'T') { // 뒤뒤?
+                    if (str[j + 2] == 'T') b[0]++; //뒤뒤뒤
+                    else if (str[j + 2] == 'H') b[1]++; //뒤뒤앞
+                }
+                else if (str[j + 1] == 'H') { //뒤앞?
+                    if (str[j + 2] == 'T') b[2]++; //뒤앞뒤
+                    else if (str[j + 2] == 'H') b[3]++; //뒤앞앞
+                }
+            }
+            else if (str[j] == 'H') { // 앞??
+                if (str[j + 1] == 'T') { // 앞뒤?
+                    if (str[j + 2] == 'T') b[4]++; //앞뒤뒤
+                    else if (str[j + 2] == 'H') b[5]++; //앞뒤앞
+                }
+                else if (str[j + 1] == 'H') { //앞앞?
+                    if (str[j + 2] == 'T') b[6]++; //앞앞뒤
+                    else if (str[j + 2] == 'H') b[7]++; //앞앞앞
+                }
+            }
+        }
+       
+        for (int z = 0; z < 8; z++) { //출력
+            std::cout << b[z] << " ";
+        }
+        std::cout << "\n";
+    }
+ 
+}
