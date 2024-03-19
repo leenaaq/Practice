@@ -1,0 +1,12 @@
+#include <iostream>
+
+int main() {
+
+    int T, S;
+    std::cin >> T >> S;
+    if(S == 0 && (12 <= T && T <= 16))
+        std::cout << "320";
+    else
+        std::cout << "280";
+    return 0;
+}
