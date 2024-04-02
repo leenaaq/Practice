@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	long long a, b, c, r1, r2;
+	cin >> a >> b >> c;
+
+	r1 = (double)(a * b) / c;
+	r2 = ((double)a / b) * c;
+
+	if (r1 > r2) cout << r1;
+	else cout << r2;
+
+	return 0;
+}
