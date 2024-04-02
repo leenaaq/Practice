@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+string n;
+int sum = 0;
+
+int main() {
+	cin >> n;
+
+	if (n.length() == 2) {
+		for (int i = 0; i < n.length(); i++) {
+			sum += int(n[i] - 48);
+		}
+		cout << sum;
+	}
+	else if (n == "1010") cout << 20;
+	else if (n[0] == '1' && n[1] == '0' && n.length() == 3) {
+		sum += 10;
+		sum += int(n[2] - 48);
+		cout << sum;
+	}
+
+	else if (n[1] == '1' && n[2] == '0' && n.length() == 3) {
+		sum += 10;
+		sum += int(n[0] - 48);
+		cout << sum;
+	}
+}
