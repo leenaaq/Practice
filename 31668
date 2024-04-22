@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+void ah(void) {
+	int n, m, k; cin >> n >> m >> k;
+	cout << m * k / n;
+}
+
+int main(void) {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr); cout.tie(nullptr);
+
+	ah();
+	return 0;
+}
