@@ -1,0 +1,22 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void ah(void) {
+	int a[4];
+	for (int i = 0; i < 4; i++) cin >> a[i];
+	sort(a, a+3);
+	int b = (a[3] + a[0]) - (a[2] + a[1]);
+	if (b < 0){
+		cout << b * -1;
+	}
+	else cout << b;
+}
+
+int main(void) {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr); cout.tie(nullptr);
+
+	ah();
+	return 0;
+}
