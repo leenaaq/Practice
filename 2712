@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t; cin >> t;
+	float a;
+	string b;
+	for (int i = 0; i < t; i++) {
+		cin >> a >> b;
+		cout << fixed;
+		cout.precision(4);
+		if (b == "kg") cout << 2.2046 * a << " lb" << "\n";
+		else if (b == "lb") cout << 0.4536 * a << " kg" << "\n";
+		else if (b == "l") cout << 0.2642 * a << " g" << "\n";
+		else if (b == "g") cout << 3.7854 * a << " l" << "\n";
+	}
+
+	return 0;
+}
