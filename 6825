@@ -1,0 +1,23 @@
+//함수 연습
+#include <iostream>
+using namespace std;
+
+int cal_bmi(int weight, float height) {
+	return weight / (height * height);
+}
+
+void message(float bmi) {
+	//cout << bmi << "\n";
+	if (bmi >= 25) { cout << "Overweight"; }
+	else if (bmi >= 18.5 && bmi < 25) { cout << "Normal weight"; }
+	else cout << "Underweight";
+}
+
+int main() {
+	int weight;
+	float height;
+	cin >> weight >> height;
+	float bmi = cal_bmi(weight, height);
+	message(bmi);
+	return 0;
+}
