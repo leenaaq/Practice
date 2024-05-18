@@ -1,0 +1,14 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+	int x, y, w, h;
+	cin >> x >> y >> w >> h;
+	int a, b;
+	a = w - x;
+	b = h - y;
+	x = min(min(x, y), min(a, b));
+	cout << x;
+	return 0;
+}
