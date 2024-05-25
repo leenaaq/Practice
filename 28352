@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int fa(int n) {
+	long long re = 1;
+	for (int i = 2; i <= n; i++) {
+		re *= i;
+	}
+	//cout << re << "\n";
+	re = re / 60 / 60 / 24 / 7;
+	return re;
+}
+
+int main() {
+	int n; cin >> n;
+	int result = fa(n);
+	cout << result;
+	return 0;
+}
