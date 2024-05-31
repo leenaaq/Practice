@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    for(int i = 0; i < n; i++) {
+        string a;
+        cin >> a;
+
+        if(a == "Algorithm") {
+            cout << "204" << endl;
+        } else if(a == "DataAnalysis") {
+            cout << "207" << endl;
+        } else if(a == "ArtificialIntelligence") {
+            cout << "302" << endl;
+        } else if(a == "CyberSecurity") {
+            cout << "B101" << endl;
+        } else if(a == "Network") {
+            cout << "303" << endl;
+        } else if(a == "Startup") {
+            cout << "501" << endl;
+        } else if(a == "TestStrategy") {
+            cout << "105" << endl;
+        }
+    }
+
+    return 0;
+}
