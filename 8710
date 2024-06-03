@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main(void) {
+    int k, w, m;
+    long long a = 0;
+    cin >> k >> w >> m;
+    while (k < w) {
+        k += m;
+        a++;
+    }
+    cout << a;
+    return 0;
+}
