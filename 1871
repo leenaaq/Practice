@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        string str;
+        cin >> str;
+
+        int sum = 0;
+        sum += (int(str[0]) - 65) * (26 * 26);
+        sum += (int(str[1]) - 65) * 26;
+        sum += (int(str[2]) - 65);
+
+        string a = "";
+        a += str[4];
+        a += str[5];
+        a += str[6];
+        a += str[7];
+
+        int num = stoi(a);
+
+        if (abs(num - sum) <= 100) {
+            cout << "nice" << endl;
+        }
+        else {
+            cout << "not nice" << endl;
+        }
+    }
+
+    return 0;
+}
