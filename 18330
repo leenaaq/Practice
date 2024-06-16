@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    b = 60 + b;
+    if (a <= b) cout << a * 1500;
+    else cout << b * 1500 + (a - b) * 3000;
+    return 0;
+}
