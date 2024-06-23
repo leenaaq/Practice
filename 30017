@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a, b, c, d=3; cin >> a >> b;
+    a -= 2; b -= 1;
+    c = min(a, b);
+    d += c * 2;
+    cout << d;
+
+    return 0;
+}
