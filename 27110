@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, a, sum = 0; cin >> n;
+    
+    for (int i = 0; i < 3; i++) {
+        cin >> a;
+        if (n >= a) sum += a;
+        else sum += n;
+    }
+    cout << sum;
+    return 0;
+}
+
