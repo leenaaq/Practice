@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int Print(int n) {
+    for (int i = 0; i < n; i++) cout << "SciComLove\n";
+    return 0;
+}
+
+int main()
+{
+    int n; cin >> n;
+    Print(n);
+    return 0;
+}
