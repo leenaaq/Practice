@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int cal() {
+    int a, b, t, f, s, p, c; cin >> t >> f >> s >> p >> c;
+    return t * 6 + f * 3 + s * 2 + p * 1 + c * 2;
+}
+
+int main()
+{
+    int a, b;
+    a = cal();
+    b = cal();
+    cout << a << " " << b;
+
+    return 0;
+}
