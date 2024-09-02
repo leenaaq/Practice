@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int n, cnt = 0; cin >> n;
+	string str;
+	while (n--) {
+		cin >> str;
+		
+		for (int i = 0; i < str.length()-1; i++) {
+			if (str[i] == '0' && str[i + 1] == '1') {
+				cnt++;
+				break;
+			}
+			if (str[i] == 'O' && str[i + 1] == 'I') {
+				cnt++;
+				break;
+			}
+		}
+	}
+	cout << cnt;
+	return 0;
+}
