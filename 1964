@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int n, result = 5, plus = 7; cin >> n;
+	for (int i = 2; i <= n; i++) {
+		result += plus;
+		plus += 3;
+
+		plus %= 45678;
+		result %= 45678;
+	}
+
+	cout << result;
+	return 0;
+}
+
