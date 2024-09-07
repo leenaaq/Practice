@@ -6,12 +6,9 @@ int main() {
 	for (int i = 2; i <= n; i++) {
 		result += plus;
 		plus += 3;
-
-		plus %= 45678;
 		result %= 45678;
 	}
 
 	cout << result;
 	return 0;
 }
-
