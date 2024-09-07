@@ -1,0 +1,41 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+float cal(string score) {
+    if (score == "A+") return 4.3;
+    else if (score == "A0") return 4.0;
+    else if (score == "A-") return 3.7;
+    else if (score == "B+") return 3.3;
+    else if (score == "B0") return 3.0;
+    else if (score == "B-") return 2.7;
+    else if (score == "C+") return 2.3;
+    else if (score == "C0") return 2.0;
+    else if (score == "C-") return 1.7;
+    else if (score == "D+") return 1.3;
+    else if (score == "D0") return 1.0;
+    else if (score == "D-") return 0.7;
+    else return 0.0;
+}
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int n, hak, haksum = 0;
+    cin >> n;
+    float sum = 0;
+    string className, score;
+
+    for (int i = 0; i < n; i++) {
+        cin >> className >> hak >> score;
+        haksum += hak;
+        sum += hak * cal(score);
+    }
+
+    cout << fixed << setprecision(2);
+    cout << sum / haksum;
+
+    return 0;
+}
