@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int n = 1;
+
+	while (n != 0) {
+		int sum = 0;
+		cin >> n;
+
+		if (n == 0) break;
+
+		n++;
+
+		while (n--) {
+			sum += n;
+		}
+
+		cout << sum << "\n";
+	}
+	return 0;
+}
