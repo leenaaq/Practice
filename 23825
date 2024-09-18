@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int n, m, a; cin >> n >> m;
+	if (n > m) a = m;
+	else a = n;
+
+	cout << a / 2;
+
+	return 0;
+}
