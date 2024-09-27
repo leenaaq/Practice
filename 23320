@@ -1,0 +1,22 @@
+	#include <iostream>
+	using namespace std;
+
+	int main() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		
+		int n, x, y, sum = 0; cin >> n;
+		int score[100] = {0, };
+		for (int i = 0; i < n; i++) {
+			cin >> score[i];
+		}
+
+		cin >> x >> y;
+
+		for (int i = 0; i < n; i++) {
+			if (score[i] >= y) sum++;
+		}
+
+		cout << x * (n * 0.01) << " " << sum; 
+		return 0;
+	}
