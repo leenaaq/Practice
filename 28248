@@ -1,0 +1,13 @@
+	#include <iostream>
+	using namespace std;
+
+	int main() {
+		ios::sync_with_stdio(0);
+		cin.tie(0);
+		
+		int p, c, b = 0; cin >> p >> c;
+
+		if (p > c) b = 500;
+		cout << (p * 50) - (c * 10) + b ;
+		return 0;
+	}
