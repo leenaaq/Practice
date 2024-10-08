@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int t, n, c;
+float g;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+   
+    cin >> t;
+    
+    for (int i = 0; i < t; i++) {
+        int sum = 0;
+        float score = 0;
+        cin >> n;
+        for (int j = 0; j < n; j++) {
+            cin >> c >> g;
+            sum += c;
+            score += c * g;
+        }
+        cout << fixed;
+        cout.precision(1);
+        cout << sum << " " << score/sum << "\n";
+    }
+    return 0;
+}
