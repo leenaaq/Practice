@@ -1,0 +1,29 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    string color[4];
+    vector <string> result;
+
+    for (int i = 0; i < 4; i++) cin >> color[i];
+
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            result.push_back(color[i] + " " + color[j] + "\n");
+        }
+    }
+    
+    sort(result.begin(), result.end());
+    result.erase(unique(result.begin(), result.end()), result.end());
+    int size = result.size();
+
+    for (int i = 0; i < size; i++) {
+        cout << result[i];
+    }
+    return 0;
+}
