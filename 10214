@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int t; cin >> t;
+    for (int i = 0; i < t; i++) {
+        int y, k, sumy = 0, sumk = 0;
+        for (int j = 0; j < 9; j++) {
+            cin >> y >> k;
+            sumk += k;
+            sumy += y;
+        }
+        if (sumy > sumk) cout << "Yonsei\n";
+        else if (sumy < sumk) cout << "Korea\n";
+        else cout << "Draw\n";
+    }
+    
+    return 0;
+}
