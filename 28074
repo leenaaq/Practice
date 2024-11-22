@@ -1,0 +1,23 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    char mobis[5] = { 'M', 'O', 'B', 'I', 'S' };
+    bool a = 0;
+
+    string sticker; cin >> sticker;
+    
+    for (int i = 0; i < 5; i++) {
+        if (find(sticker.begin(), sticker.end(), mobis[i]) == sticker.end()) {
+            cout << "NO";
+            return 0;
+        }
+    }
+
+    cout << "YES";
+    return 0;
+}
