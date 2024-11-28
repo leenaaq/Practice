@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int n;
+    cin >> n;
+    vector<int> b(n);
+
+    for (int i = 0; i < n; i++) {
+        vector<int> cards(5);
+        for (int j = 0; j < 5; j++) {
+            cin >> cards[j];
+        }
+
+        int maxNum = -1;
+        for (int x = 0; x < 5; x++) {
+            for (int y = x + 1; y < 5; y++) {
+                for (int z = y + 1; z < 5; z++) {
+                    int sum = cards[x] + cards[y] + cards[z];
+                    maxNum = max(maxNum, sum % 10);
+                }
+            }
+        }
+        b[i] = maxNum;
+    }
+
+    int max = -1, maxIdx;
+    for (int i = 0; i < n; i++) {
+        if (b[i] > max || (b[i] == max && i + 1 > maxIdx)) {
+            max = b[i];
+            maxIdx = i + 1;
+        }
+    }
+
+    cout << maxIdx;
+    return 0;
+}
