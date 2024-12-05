@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int t, g, c, e; cin >> t;
+    for (int i = 0; i < t; i++) {
+        cin >> g >> c >> e;
+		if (c >= e) cout << "0\n";
+		else if (g == 1) {
+			cout << e - c << "\n";
+		}
+		else if (g == 2) {
+			cout << (e - c) * 3 << "\n";
+		}
+		else if (g == 3) {
+			cout << (e - c) * 5 << "\n";
+		}
+    }
+
+    return 0;
+}
