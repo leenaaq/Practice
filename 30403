@@ -1,0 +1,30 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int n, state1 = 0, state2 = 0;
+    char color1[7] = { 'r', 'o', 'y', 'g', 'b', 'i', 'v'};
+    char color2[7] = { 'R', 'O', 'Y', 'G', 'B', 'I', 'V' };
+    string str;
+    cin >> n >> str;
+
+    for (int i = 0; i < 7; i++) {
+        if (find(str.begin(), str.end(), color1[i]) != str.end()) {
+            state1++;
+        }
+        if (find(str.begin(), str.end(), color2[i]) != str.end()) {
+            state2++;
+        }
+    }
+    if (state1 >= 7 && state2 >= 7) cout << "YeS";
+    else if (state1 >= 7) cout << "yes";
+    else if (state2 >= 7) cout << "YES";
+    else cout << "NO!";
+
+    
+    return 0;
+}
