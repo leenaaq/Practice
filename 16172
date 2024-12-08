@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    string s, k, str;
+    cin >> s >> k;
+
+    for (int i = 0; i < s.length(); i++) {
+        if (isalpha(s[i])) str.push_back(s[i]);
+    }
+
+    if (str.find(k) == string::npos) cout << "0";
+    else cout << "1";
+
+    return 0;
+}
