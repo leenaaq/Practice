@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    string J_mbti, mbti;
+    int n, sum = 0; cin >> J_mbti >> n;
+
+    while (n--) {
+        cin >> mbti;
+        if (J_mbti == mbti) sum++;
+    }
+
+    cout << sum;
+    return 0;
+}
+
