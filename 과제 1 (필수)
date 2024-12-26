@@ -1,0 +1,79 @@
+//1-1 필수 과제
+
+#include <iostream>
+using namespace std;
+
+int num[5];
+
+int Sum() {
+	int result = 0;
+	for (int i = 0; i < 5; i++) result += num[i];
+	return result;
+}
+
+float Avg() {
+	return Sum() / 5.0f;
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	
+	for (int i = 0; i < 5; i++) cin >> num[i];
+
+	cout << Sum() << "\n";
+	cout << Avg() << "\n";
+
+	return 0;
+}
+
+1-2 도전과제
+#include <iostream>
+using namespace std;
+
+int num[10] = { 3, 5, 13, 2, 1, 4, 8, 5, 6, 11 }; // 임시데이터
+int arrNum = sizeof(num) / sizeof(num[0]); // 배열 size 저장
+
+void BubbleSort() { // 버블정렬(오름차순)
+	for (int i = 0; i < arrNum; i++) {
+		for (int j = 0; j < arrNum - i - 1; j++) {
+			if (num[j] > num[j + 1]) swap(num[j], num[j + 1]);
+		}
+		cout << "Pass " << i + 1 << " : ";
+		for (int j = 0; j < arrNum; j++) {
+			cout << num[j] << " ";
+		}
+		cout << "\n";
+	}	
+}
+
+void SelectSort() { // 선택정렬(내림차순)
+	for (int i = 0; i < arrNum - 1; i++) {
+		int maxIdx = i;
+		for (int j = i + 1; j < arrNum; j++) {
+			if (num[maxIdx] < num[j]) {
+				maxIdx = j;
+			}
+		}
+		swap(num[maxIdx], num[i]);
+
+		cout << "Pass " << i + 1 << " : ";
+		for (int j = 0; j < 10; j++) {
+			cout << num[j] << " ";
+		}
+		cout << "\n";
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	
+	int n; 
+	cout << "1. 오름차순(버블정렬)\n2. 내림차순(선택정렬)\n숫자 입력 : ";
+	cin >> n;
+	if (n == 1) BubbleSort();
+	else if (n == 2) SelectSort();
+	else cout << "다른 값 입력";
+	return 0;
+}
