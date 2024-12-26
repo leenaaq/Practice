@@ -1,0 +1,49 @@
+//2-1 필수과제
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Animal {
+public:
+	virtual void makeSound() = 0;
+	virtual ~Animal() {}
+};
+
+class Cat : public Animal {
+public:
+	void makeSound() {
+		cout << "냥냥\n";
+	}
+};
+
+class Dog : public Animal {
+	void makeSound() {
+		cout << "개개\n";
+	}
+};
+
+class Cow : public Animal {
+	void makeSound() {
+		cout << "소소";
+	}
+};
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	
+	vector<Animal*> animal;
+	animal.push_back(new Dog());
+	animal.push_back(new Cat());
+	animal.push_back(new Cow());
+
+	for (size_t i = 0; i < animal.size(); ++i) {
+		animal[i]->makeSound();
+	}
+
+	for (size_t i = 0; i < animal.size(); ++i) {
+		delete animal[i];
+	}
+	return 0;
+}
