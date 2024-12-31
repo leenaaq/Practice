@@ -1,0 +1,86 @@
+#include <iostream>
+#include <stdexcept>
+#include <algorithm>
+using namespace std;
+
+template <typename T>
+class SimpleVector {
+	// 타입에 의존하지 않고 데이터를 받을수 있는 배열을 멤버변수로 갖습니다.
+	// 생성자 : 기본 생성자는 크기가 10인 배열을 만듭니다, 숫자를 하나 받는 생성자는 해당 숫자에 해당되는 크기의 배열을 만듭니다.
+private:
+	T* data; // data : T*
+	int currentSize; // currentSize : int, 원소 개수
+	int currentCapacity; // currentCapacity : int, 배열 크기
+
+	// resizer() : void
+	void resize(int newCapacity) {
+		if (newCapacity <= currentCapacity) return;
+
+		T* newData = new T[newCapacity];
+		for (int i = 0; i < currentSize; i++) {
+			newData[i] = data[i]; 
+		}
+		delete[] data;
+		data = newData;
+		currentCapacity = newCapacity;
+	}
+
+public:
+	SimpleVector() : currentSize(0), currentCapacity(10) { // SimpleVector()
+		data = new T[currentCapacity];
+	}
+
+	SimpleVector(int capacity) : currentSize(0), currentCapacity(capacity) { // SimpleVector(capacity:int)
+		data = new T[currentCapacity];
+	}
+
+	~SimpleVector() { // ~SimpleVector()
+		delete[] data;
+	}
+
+	// 숫자를 하나 받는 생성자는 해당 숫자에 해당되는 크기의 배열을 만듭니다.
+	void push_back(const T& value) { // push_back(value:const T&) : void
+		if (currentSize >= currentCapacity) resize(currentCapacity + 5);
+		data[currentSize++] = value;
+	}
+
+	// pop_back은 벡터의 마지막 원소를 제거 합니다. 만약 제거할 원소가 없다면 아무 동작도 하지 않으며, 인자 및 반환값은 없습니다.
+	void pop_back() {
+		if (currentSize > 0) currentSize--;
+	}
+
+	int size() { return currentSize; } // size() : int
+
+	int capacity() { return currentCapacity; } // capacity() : int
+
+	// sortData() : void
+	void sortData() {
+		sort(data, data + currentSize);
+	}
+
+	T& operator[](int index) const { // operator[](index:int) : T&
+		if (index < 0 || index >= currentSize) {
+			throw out_of_range("Index out of bounds");
+		}
+		return data[index];
+	}
+};
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	SimpleVector<int> simVec;
+
+	simVec.push_back(3);
+	simVec.push_back(1);
+	simVec.push_back(4);
+	simVec.push_back(1);
+	simVec.push_back(5);
+
+	simVec.sortData();
+
+	for (int i = 0; i < simVec.size(); i++) cout << i << ": " << simVec[i] << '\n';
+
+	return 0;
+}
