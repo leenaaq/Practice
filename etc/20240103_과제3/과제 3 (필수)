@@ -13,9 +13,8 @@ private:
 	int currentCapacity; // currentCapacity : int, 배열 크기
 
 	// resizer() : void
-	void resize(int newCapacity) {
-		if (newCapacity <= currentCapacity) return;
-
+	void resize() {
+		int newCapacity = currentCapacity + 5;
 		T* newData = new T[newCapacity];
 		for (int i = 0; i < currentSize; i++) {
 			newData[i] = data[i]; 
@@ -24,6 +23,7 @@ private:
 		data = newData;
 		currentCapacity = newCapacity;
 	}
+
 
 public:
 	SimpleVector() : currentSize(0), currentCapacity(10) { // SimpleVector()
