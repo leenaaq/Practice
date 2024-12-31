@@ -40,7 +40,7 @@ public:
 
 	// 숫자를 하나 받는 생성자는 해당 숫자에 해당되는 크기의 배열을 만듭니다.
 	void push_back(const T& value) { // push_back(value:const T&) : void
-		if (currentSize >= currentCapacity) resize(currentCapacity + 5);
+		if (currentSize >= currentCapacity) resize();
 		data[currentSize++] = value;
 	}
 
