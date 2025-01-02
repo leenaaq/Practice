@@ -1,0 +1,220 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cstdlib>
+
+using namespace std; // namespace std 사용
+
+class Book {
+public:
+    string title;
+    string author;
+    int count;
+
+    Book(const string& title, const string& author, int count = 1)
+        : title(title), author(author), count(count) {
+    }
+};
+
+class BookManager {
+private:
+    vector<Book> books; // 책 목록 저장
+
+public:
+    // 책 추가 메서드
+    void addBook(const string& title, const string& author, int count) {
+        for (auto& book : books) {
+            if (book.title == title && book.author == author) {
+                book.count += count;
+                cout << "[" << title << " - " << author << "]" << "책을 " << count << "권 추가했습니다.\n";
+                return;
+            }
+        }
+        books.push_back(Book(title, author, count)); 
+        cout << "[" << title << " - " << author << "]" << "책을 " << count << "권 추가되었습니다" << endl;
+    }
+
+    // 모든 책 출력 메서드
+    void displayAllBooks() const {
+        if (books.empty()) {
+            cout << "현재 등록된 책이 없습니다." << endl;
+            return;
+        }
+
+        cout << "현재 도서 목록:" << endl;
+        for (size_t i = 0; i < books.size(); i++) { 
+            cout << "- " << books[i].title << " by " << books[i].author << " : " << books[i].count << "권" << endl;
+        }
+    }
+
+    // 책 제목 검색
+    void searchByTitle(string title) {
+        bool found = false;
+        for (auto& book : books) {
+            if (book.title == title) {
+                cout << "\n검색 결과\n"
+                    << "제목 : " << book.title << "\n"
+                    << "작가 : " << book.author << "\n"
+                    << "재고 : " << book.count << "권\n";
+                found = true;
+
+                if (book.count > 0) {
+                    int choice;
+                    cout << "\n[" << book.title << " - " << book.author << "] - " << "남은 재고 : " << book.count << "\n";
+                    cout << "1. 대여\n";
+                    cout << "2. 반납\n";
+                    cout << "선택: ";
+                    cin >> choice;
+
+                    if (choice == 1) rentBookTitle(title);
+                    else if (choice == 2) returnBookTitle(title);
+                    else cout << "잘못된 선택입니다.\n";
+                }
+                else {
+                    int choice;
+                    cout << "현재 재고가 없습니다. 반납만 가능합니다.\n";
+                    cout << "\n1. 반납\n";
+                    cout << "2. 돌아가기\n";
+                    cout << "선택: ";
+                    cin >> choice;
+
+                    if (choice == 1) returnBookTitle(title);
+                    else if (choice == 2) break;
+                    else cout << "잘못된 선택입니다.\n";
+                }
+                return;
+            }
+        }
+
+        if (!found) {
+            cout << "검색 결과가 없습니다: " << title << endl;
+        }
+    }
+
+    // 작가 검색
+    void searchByAuthor(string author) {
+        bool found = 0;
+        for (const Book& book : books) {
+            if (book.author == author) {
+                cout << "\n검색 결과\n" << "제목 : " << book.title << "\n" << "작가 : " << book.author << "\n";
+                found = 1;
+                break;
+            }
+        }
+        if (found == 0) {
+            cout << "검색 결과가 없습니다: " << author << endl;
+        }
+    }
+
+    // 제목으로 대출
+    void rentBookTitle(string title) {
+        for (auto& book : books) {
+            if (book.title == title && book.count > 0) {
+                book.count--;
+                cout << "[" << book.title << "] 책을 대여했습니다. 남은 재고: " << book.count << "권\n";
+                return;
+            }
+        }
+        cout << "[대여 실패] 재고가 없습니다.\n";
+    }
+
+    // 제목으로 반납
+    void returnBookTitle(string title) {
+        for (auto& book : books) {
+            if (book.title == title) {
+                book.count++;
+                cout << "[" << book.title << "] 책을 반납했습니다. 현재 재고: " << book.count << "권\n";
+                return;
+            }
+        }
+        cout << "[반납 실패] 해당 책은 목록에 없습니다.\n";
+    }
+};
+
+int main() {
+    BookManager manager;
+
+    // 임시 데이터 추가
+    manager.addBook("제목1", "작가1", 1);
+    manager.addBook("제목2", "작가2", 2);
+    manager.addBook("제목3", "작가3", 3);
+
+    // 도서관 관리 프로그램의 기본 메뉴를 반복적으로 출력하여 사용자 입력을 처리합니다.
+    // 프로그램 종료를 선택하기 전까지 계속 동작합니다.
+    while (true) {
+        cout << "\n도서관 관리 프로그램" << endl;
+        cout << "(간혈적 무한 루프 문제로 \"작가 이름으로 대출 / 반납 미구현\")" << endl;
+        cout << "1. 책 추가" << endl; // 책 정보를 입력받아 책 목록에 추가
+        cout << "2. 모든 책 출력" << endl; // 현재 책 목록에 있는 모든 책 출력
+        cout << "3. 검색 및 대출/반납" << endl; // 
+        cout << "4. 종료" << endl; // 프로그램 종료
+        cout << "선택: ";
+
+        int choice; // 사용자의 메뉴 선택을 저장
+        cin >> choice;
+
+        if (choice == 1) {
+            // 1번 선택: 책 추가
+            // 사용자로부터 책 제목과 저자명을 입력받아 BookManager에 추가합니다.
+            string title, author;
+            int count;
+            cout << "책 제목: ";
+            cin.ignore(); // 이전 입력의 잔여 버퍼를 제거
+            getline(cin, title); // 제목 입력 (공백 포함)
+            cout << "책 저자: ";
+            getline(cin, author); // 저자명 입력 (공백 포함)
+            cout << "추가 권 수 : ";
+            cin >> count;
+            manager.addBook(title, author, count); // 입력받은 책 정보를 추가
+        }
+        else if (choice == 2) {
+            // 2번 선택: 모든 책 출력
+            // 현재 BookManager에 저장된 책 목록을 출력합니다.
+            manager.displayAllBooks();
+        }
+
+        else if (choice == 3) {
+            while (1) {
+                cout << "\n검색\n";
+                cout << "1. 책 제목으로 검색\n";
+                cout << "2. 작가 이름으로 검색\n";
+                cout << "3. 뒤로 가기\n";
+                cout << "선택 : ";
+                cin >> choice;
+                if (choice == 1) {
+                    string title;
+                    cout << "책 제목 입력 : ";
+                    cin.ignore();
+                    getline(cin, title);
+                    manager.searchByTitle(title);
+                }
+                else if (choice == 2) {
+                    string author;
+                    cout << "작가 이름 입력 : ";
+                    cin.ignore();
+                    getline(cin, author);
+                    manager.searchByAuthor(author);
+                }
+                else if (choice == 3) { break; }
+                else {
+                    cout << "잘못된 입력입니다. 다시 시도하세요." << endl;
+                }
+            }
+
+
+        }
+        else if (choice == 4) {
+            // 3번 선택: 종료
+            // 프로그램을 종료하고 사용자에게 메시지를 출력합니다.
+            cout << "프로그램을 종료합니다." << endl;
+            break; // while 루프 종료
+        }
+        else {
+            // 잘못된 입력 처리
+            // 메뉴에 없는 번호를 입력했을 경우 경고 메시지를 출력합니다.
+            cout << "잘못된 입력입니다. 다시 시도하세요." << endl;
+        }
+    }
+
+    return 0; // 프로그램 정상 종료
+}
