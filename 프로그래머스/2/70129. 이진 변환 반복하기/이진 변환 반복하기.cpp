@@ -4,7 +4,7 @@
 #include <cmath>
 using namespace std;
 
-string ejin(int n) {
+string Binary(int n) {
     vector<int> temp;
     while(n > 1){
         temp.push_back(n % 2);
@@ -35,7 +35,7 @@ vector<int> solution(string s) {
     int cnt = 0, len, zeroCnt = 0;
     while(len != 1){
         len = Count(s, &zeroCnt);
-        s = ejin(len);
+        s = Binary(len);
         cnt++;
     }
     answer.push_back(cnt);
