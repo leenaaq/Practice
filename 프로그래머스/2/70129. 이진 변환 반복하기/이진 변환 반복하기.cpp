@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 string Binary(int n) {
