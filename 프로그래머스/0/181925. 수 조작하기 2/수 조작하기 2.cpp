@@ -1,28 +1,15 @@
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
 string solution(vector<int> numLog) {
+    map<int, char> m = {{1, 'w'}, {-1, 's'}, {10, 'd'}, {-10, 'a'} };
     string answer = "";
     for(int i = 1; i < numLog.size(); i++)
     {
-        if(numLog[i-1] == numLog[i] - 1)
-        {
-            answer += 'w';
-        }
-        else if (numLog[i-1] == numLog[i] + 1)
-        {
-            answer += 's';
-        }
-        else if (numLog[i-1] == numLog[i] - 10)
-        {
-            answer += 'd';
-        }
-        else if (numLog[i-1] == numLog[i] + 10)
-        {
-            answer += 'a';
-        }
+        answer += m[numLog[i] - numLog[i - 1]];
     }
     return answer;
 }
