@@ -5,13 +5,24 @@
 using namespace std;
 
 int solution(vector<vector<int>> sizes) {
-    int answer = 0, a=0, b=0;
-    for(int i = 0; i < sizes.size(); i++){
-        if(sizes[i][0] < sizes[i][1]) swap(sizes[i][0], sizes[i][1]);
-        
-        if(sizes[i][0] > a) a = sizes[i][0];
-        if(sizes[i][1] > b) b = sizes[i][1];
+    int a, b;
+    for(int i = 0; i < sizes.size(); i++)
+    {
+        sort(sizes[i].begin(), sizes[i].end());
+        if(i == 0)
+        {
+            a = sizes[0][0];
+            b = sizes[0][1];
+        }
+        if(b < sizes[i][1])
+        {
+            b = sizes[i][1];
+        }
+        if(a < sizes[i][0])
+        {
+            a = sizes[i][0];
+        }
     }
-    answer = a * b;
-    return answer;
+    
+    return a * b;
 }
