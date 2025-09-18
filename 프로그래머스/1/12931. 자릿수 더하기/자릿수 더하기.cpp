@@ -3,14 +3,12 @@
 using namespace std;
 int solution(int n)
 {
+    string str = to_string(n);
     int answer = 0;
     
-    while(n){
-        answer += n % 10;
-        n /= 10;
+    for(int i = 0; i < str.length(); i++)
+    {
+        answer += str[i] - '0';
     }
-
-    answer += n;
-    
     return answer;
 }
